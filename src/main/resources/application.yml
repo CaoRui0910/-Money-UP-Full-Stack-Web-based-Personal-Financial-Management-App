@@ -1,0 +1,24 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/bookkeeping
+    username: root
+    password: Liu199499.
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari.minimum-idle: 5
+    hikari.maximum-pool-size: 15
+    hikari.auto-commit: true
+    hikari.idle-timeout: 30000
+    hikari.pool-name: DatebookHikariCP
+    hikari.max-lifetime: 1800000
+    hikari.connection-timeout: 30000
+    hikari.connection-test-query: SELECT 1
+  thymeleaf:
+    prefix: classpath:/templates/ # 访问template下的html文件需要配置模板，映射，路径指向
+    suffix: .html
+    cache: false # 开发时关闭缓存,不然没法看到实时页面

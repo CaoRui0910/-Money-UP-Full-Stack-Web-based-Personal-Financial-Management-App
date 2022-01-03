@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="home/_layout.html">
+<div id="app" th:fragment="content">
+        <div class="top-bar" style="background: #f8da6b">
+            <a class="back" onclick="window.history.go(-1)"></a>
+            <span style="color: #635530;font-weight: 500">Bookkeeping</span>
+        </div>
+        <!-- 个人信息 -->
+        <div class="person-info" style="background: #f8da6b">
+            <div style="display: flex;justify-content: left;width: 100%;height: 90px">
+                <div style="width: 25%;margin-right: 1%;position: relative">
+                    <input type="text" style="position: absolute;top: 0;left: 0;width: 100%;height: 50px;opacity:0" id="dateinput" onchange="change_data($(this))">
+                    <p style="font-size: 12px;margin-bottom: 0" th:text="${year}">2021</p>
+                    <div style="margin-top: -5px">
+                        <span style="font-size: 16px" th:text="${month}">12</span>
+                        <img th:src="@{/css/images/下箭头.png}" alt="">
+                    </div>
+                </div>
+                <div style="width: 38%;margin-right: 1%;padding-left: 10px">
+                    <p style="font-size: 12px;margin-bottom: 5px">Income</p>
+                    <p style="font-size: 15px;margin-bottom: 0" th:text="${bookingGetSum / 100}">3000.00</p>
+                </div>
+                <div style="width: 38%;padding-left: 10px">
+                    <p style="font-size: 12px;margin-bottom: 5px">Expenditure</p>
+                    <p style="font-size: 15px;margin-bottom: 0" th:text="${bookingOutSum / 100}">454.00</p>
+                </div>
+            </div>
+        </div>
+        <div style="background: linear-gradient(#f8da6b, #ffffff)">
+            <div class="icon-div">
+                <div class="insert-div" onclick="location.href='/bill'">
+                    <img th:src="@{/css/images/27账单.png}" alt="" class="last-img">
+                    <div>Bill</div>
+                </div>
+                <div class="insert-div" onclick="location.href='/budget'">
+                    <img th:src="@{/css/images/预算单位.png}" alt="" class="last-img">
+                    <div>Budget</div>
+                </div>
+            </div>
+        </div>
+        <!-- 主体 -->
+    <div class="container">
+        <div style="margin-bottom: 10px;margin-top: 20px"  th:each="bookInfo : ${bookingInfoList}">
+            <div style="display: flex;justify-content: left;border-bottom: 1px solid;font-size: 12px;color: #b2b2b2;padding-bottom: 5px">
+                <div style="width: 50%;text-align: left" th:text="${bookInfo.getDate()}">12月31日</div>
+                <div style="width: 50%;text-align: right">
+                    <span th:text="'Income:' + ${bookInfo.getGetPrice() / 100}"></span>
+                    <span th:text="'Expenditure:' + ${bookInfo.getOutPrice() / 100}"></span>
+                </div>
+            </div>
+            <div style="display: flex;justify-content: left;font-size: 14px;height: 40px;padding-top: 10px" th:each="booking: ${bookInfo.getBookingList()}">
+                <div style="width: 15%;">
+                    <div style="height: 30px;width:30px;border-radius: 15px;background: #f5f5f5;text-align: center;line-height: 26px">
+                        <img th:src="@{/css/images/理财.png}" alt="" style="width: 15px">
+                    </div>
+
+                </div>
+                <div style="width: 50%;line-height: 30px;color: #303030" th:text="${booking.getName()}">
+                    娱乐
+                </div>
+                <div style="width: 35%; text-align: right;line-height: 25px;color: #303030">
+                    <span th:if="${booking.getKind() eq 'out'}">-</span>
+                    <span th:text="${booking.getPrice() / 100}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--        <div class="line"></div>-->
+        <div style="position: absolute;bottom: 0;height: 60px;width:100%;display: flex;justify-content:space-between">
+            <div class="last-div">
+                <img th:src="@{/css/images/mingxi.png}" alt="" class="last-img" onclick="window.location.href='/'">
+                <div>Detail</div>
+            </div>
+
+            <div style="width: 33.33%;background: #ffffff;text-align: center;" onclick="window.location.href='/booking'">
+                <img th:src="@{/css/images/加.png}" alt="" style="width: 60px;margin-bottom: 2px;margin-top: -35px">
+                <div style="font-size: 12px">Record</div>
+            </div>
+            <div class="last-div">
+                <img th:src="@{/css/images/tubiao.png}" alt="" class="last-img" onclick="window.location.href='/summary'">
+                <div>Chart</div>
+            </div>
+<!--            <div class="last-div">-->
+<!--                <img th:src="@{/css/images/shequ.png}" alt="" class="last-img">-->
+<!--                <div>社区</div>-->
+<!--            </div>-->
+<!--            <div class="last-div">-->
+<!--                <img th:src="@{/css/images/my.png}" alt="" class="last-img">-->
+<!--                <div>我的</div>-->
+<!--            </div>-->
+        </div>
+    </div>
+
+</html>
+
+<script>
+    $(function (){
+        var nowData=new Date();
+        var opt= {
+            theme:'ios', //设置显示主题
+            mode:'scroller', //设置日期选择方式，这里用滚动
+            display:'bottom', //设置控件出现方式及样式
+            preset : 'date', //日期:年 月 日 时 分
+            // minDate: nowData,
+            maxDate:new Date(nowData.getFullYear(),nowData.getMonth(),nowData.getDate()+7,22),
+            dateFormat: 'yy-mm-dd',
+            yearText:'年',
+            monthText:'月',
+            dayText:'日',
+        };
+        $('#dateinput').mobiscroll(opt);
+
+
+    })
+    function change_data(){
+        let r = true;
+        let date = $("#dateinput").val()
+        let result = date.split('-')
+        if (result.length !== 3){
+            r = false;
+        }else{
+            window.location.href='/?year=' + result[0] + '&month=' + result[1]
+        }
+    }
+</script>

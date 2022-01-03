@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="home/_layout.html">
+<div id="app" th:fragment="content">
+    <div class="top-bar" style="background: #f8da6b">
+        <a class="back"  onclick="window.history.go(-1)"></a>
+        <span style="color: #635530;font-weight: 500">Bookkeeping</span>
+    </div>
+    <!-- 个人信息 -->
+    <div class="person-info" style="background: #f8da6b;padding-top: 10px;padding-bottom: 0">
+        <div style="text-align: center;font-size: 12px;display: flex;justify-content: left">
+            <div style="width: 30%"></div>
+            <div style="margin-right: 20px;width: 29%;text-align: center;padding-bottom: 5px;font-size: 12px" onclick="menu_change(1)" id="out_menu" class="border-style">
+                Expenditure
+            </div>
+            <div style="width: 19%;text-align: center;padding-bottom: 5px;font-size: 12px" onclick="menu_change(0)" id="in_menu">
+                Income
+            </div>
+            <div style="width: 30%"></div>
+
+        </div>
+    </div>
+    <div id="out_money">
+        <div style="display: flex;width: 100%;justify-content: left;padding: 10px 20px;flex-wrap: wrap">
+            <div class="icon-style" onclick="openAlert('Restaurant', 'food', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/餐饮.png}" alt="" class="last-img">
+                </div>
+                <p style="font-size: 12px">Restaurant</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Shopping', 'shopping', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/_购物.png}" alt="" class="last-img">
+                </div>
+                <p>Shopping</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Daily', 'goods', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/日用品.png}" alt="" class="last-img">
+                </div>
+                <p>Daily</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Traffic', 'traffic', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/公交.png}" alt="" class="last-img">
+                </div>
+                <p>Traffic</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Vegetables', 'vegetables', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/carrot.png}" alt="" class="last-img">
+                </div>
+                <p>Vegetables</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Fruits', 'fruits', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/水果.png}" alt="" class="last-img">
+                </div>
+                <p>Fruits</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Snacks', 'snacks', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/零食.png}" alt="" class="last-img">
+                </div>
+                <p>Snacks</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Sports', 'sport', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/运动.png}" alt="" class="last-img">
+                </div>
+                <p>Sports</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Break', 'play', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/娱乐.png}" alt="" class="last-img">
+                </div>
+                <p>Break</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Communication', 'mobile', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/电话.png}" alt="" class="last-img">
+                </div>
+                <p>Communication</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Cloth', 'cloth', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/服饰.png}" alt="" class="last-img">
+                </div>
+                <p>Cloth</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Cosmetology', 'cosmetology', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/美容.png}" alt="" class="last-img">
+                </div>
+                <p>Cosmetology</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('House', 'house', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/住房.png}" alt="" class="last-img">
+                </div>
+                <p>House</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Home', 'Home', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/居家.png}" alt="" class="last-img">
+                </div>
+                <p>Home</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Kid', 'kid', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/孩子.png}" alt="" class="last-img">
+                </div>
+                <p>Kid</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Elder', 'elder', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/长辈.png}" alt="" class="last-img">
+                </div>
+                <p>Elder</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Social', 'social', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/社交.png}" alt="" class="last-img">
+                </div>
+                <p>Social</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Travel', 'travel', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/旅行.png}" alt="" class="last-img">
+                </div>
+                <p>Travel</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Smoke', 'smoke', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/烟酒.png}" alt="" class="last-img">
+                </div>
+                <p>Smoke</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Camaro', 'camaro', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/数码家电类目.png}" alt="" class="last-img">
+                </div>
+                <p>Camaro</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Car', 'car', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/汽车.png}" alt="" class="last-img">
+                </div>
+                <p>Car</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Hospital', 'Hospital', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/医疗.png}" alt="" class="last-img">
+                </div>
+                <p>Hospital</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Book', 'book', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/图书.png}" alt="" class="last-img">
+                </div>
+                <p>Book</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Study', 'study', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/学习.png}" alt="" class="last-img">
+                </div>
+                <p>Study</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Pets', 'pets', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/宠物.png}" alt="" class="last-img">
+                </div>
+                <p>Pets</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Cash Gift', 'Cash Gift', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/升级礼金.png}" alt="" class="last-img">
+                </div>
+                <p>Cash Gift</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Gift', 'gift', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/礼物.png}" alt="" class="last-img">
+                </div>
+                <p>Gift</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Work', 'work', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/办公包_o.png}" alt="" class="last-img">
+                </div>
+                <p>Work</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Donation', 'repair', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/维修.png}" alt="" class="last-img">
+                </div>
+                <p>Repair</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Donation', 'donation', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/爱心捐赠.png}" alt="" class="last-img">
+                </div>
+                <p>Donation</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Lottery', 'lottery', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/彩票.png}" alt="" class="last-img">
+                </div>
+                <p>Lottery</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Friends', 'friends', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/亲友.png}" alt="" class="last-img">
+                </div>
+                <p>Friends</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Express', 'express', 'out')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/快递员.png}" alt="" class="last-img">
+                </div>
+                <p>Express</p>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div id="in_money" style="display: none">
+        <div style="display: flex;width: 100%;justify-content: left;padding: 10px 20px;flex-wrap: wrap">
+            <div class="icon-style" onclick="openAlert('Salary', 'Salary', 'get')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/工资.png}" alt="" class="last-img">
+                </div>
+                <p style="font-size: 12px">Salary</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Part job', 'part job', 'get')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/兼职.png}" alt="" class="last-img">
+                </div>
+                <p>Part job</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Cft', 'cft', 'get')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/理财 (1).png}" alt="" class="last-img">
+                </div>
+                <p>Cft</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Cash gift', 'cash_gift', 'get')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/升级礼金.png}" alt="" class="last-img">
+                </div>
+                <p>Cash gift</p>
+            </div>
+            <div class="icon-style" onclick="openAlert('Others', 'others', 'get')">
+                <div class="img-back">
+                    <img th:src="@{/css/images/其他.png}" alt="" class="last-img">
+                </div>
+                <p>Others</p>
+            </div>
+        </div>
+    </div>
+    <div class="sy-alert sy-alert-model animated" sy-enter="zoomIn" sy-leave="zoomOut" sy-type="confirm" sy-mask="true" id="alert4">
+        <div class="sy-title">Bookkeeping</div>
+        <div class="sy-content">
+            <div class="form">
+                <form id="booking_form">
+                    <div class="input-item">
+                        <span>Choose：</span>
+                        <input type="text" name="name" id="booking_name" readonly>
+                    </div>
+                    <div class="input-item">
+                        <span>Date：</span>
+                        <input type="text" name="date" id="dateinput">
+                    </div>
+                    <div class="input-item">
+                        <span>Balance：</span>
+                        <input type="number" id="booking_money">
+                    </div>
+                    <p id="tips" style="color: red"></p>
+                    <input type="hidden" name="kind" id="booking_type">
+                    <input type="hidden" name="year" id="year">
+                    <input type="hidden" name="month" id="month">
+                    <input type="hidden" name="day" id="day">
+                    <input type="hidden" name="price" id="price">
+                </form>
+            </div>
+        </div>
+        <div class="sy-btn">
+            <button onclick="closeAlert()">Cancel</button>
+            <button onclick="save_alert()">Save</button>
+        </div>
+    </div>
+</div>
+</html>
+<script>
+    $(function (){
+        var nowData=new Date();
+        var opt= {
+            theme:'ios', //设置显示主题
+            mode:'scroller', //设置日期选择方式，这里用滚动
+            display:'bottom', //设置控件出现方式及样式
+            preset : 'date', //日期:年 月 日 时 分
+            // minDate: nowData,
+            maxDate:new Date(nowData.getFullYear(),nowData.getMonth(),nowData.getDate()+7,22),
+            dateFormat: 'yy-mm-dd',
+            yearText:'年',
+            monthText:'月',
+            dayText:'日',
+            // lang:'zh' //设置控件语言};
+        };
+        $('#dateinput').mobiscroll(opt);
+    })
+    function menu_change(change_type){
+        if (change_type === 1){
+            $("#out_menu").addClass('border-style')
+            $("#in_menu").removeClass('border-style')
+            $("#out_money").show()
+            $("#in_money").hide()
+        }else{
+            $("#in_menu").addClass('border-style')
+            $("#out_menu").removeClass('border-style')
+            $("#out_money").hide()
+            $("#in_money").show()
+        }
+
+    }
+    function openAlert(booking_zh, booking_en, booking_type){
+        $("#booking_name").val(booking_zh)
+        $("#booking_type").val(booking_type)
+        syalert.syopen('alert4')
+    }
+    function closeAlert(){
+        $("#booking_name").val('')
+        $("#booking_type").val('')
+        syalert.syhide('alert4')
+    }
+    function save_alert(){
+        let r = make_data()
+        console.log(r)
+        if ( r ){
+            _post('/booking', $("#booking_form").serialize(), function (resp){
+                syalert.syhide('alert4')
+                location.href='/'
+            })
+        }else{
+            console.log("2323")
+            $("#tips").text("日期格式不正确，请填写yyyy-mm-dd格式的日期")
+        }
+    }
+    function make_data(){
+        let r = true;
+        let date = $("#dateinput").val()
+        let result = date.split('-')
+        if (result.length !== 3){
+            r = false;
+        }else{
+            $("#year").val(result[0])
+            $("#month").val(result[1])
+            $("#day").val(result[2])
+            let price = $("#booking_money").val()
+            price = Math.floor(price * 100)
+            $("#price").val(price)
+        }
+        return r;
+    }
+</script>

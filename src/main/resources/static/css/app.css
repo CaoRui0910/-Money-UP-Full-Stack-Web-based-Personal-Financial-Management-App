@@ -1,0 +1,756 @@
+
+/* 每日报告 strat */
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #ffffff;
+}
+.DailyReportPage{
+    /*background: url(../images/mpool_introduce.png) 0 0 no-repeat;*/
+    background-size: 100% 100%;
+    background-color: #f4f8ff;
+    color: #000000;
+    padding-bottom: 90px;
+
+}
+.DailyReportPage .mobile-pb-bar{
+    display: none;
+}
+.DailyReportPage .report{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-tit{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-bottom: solid 1px #d3ddee;
+
+}
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-content{
+    background: #ffffff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.DailyReportPage .daily-report-bottom .daily-icon{
+    display: flex;
+    align-items: center;
+}
+.DailyReportPage .daily-report-bottom{
+    width: 1110px;
+    margin: 20px auto 0 auto;
+    display: flex;
+}
+.DailyReportPage .daily-report-bottom .daily-icon span{
+    margin-right: 5px;
+}
+.DailyReportPage .daily-report-bottom .daily-icon+.daily-icon{
+    margin-left: 12px;
+}
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 31px;
+}
+.DailyReportPage .daily-report-bottom .daily-icon:nth-of-type(1) span{
+    background: url("../images/eye@2x.png") center no-repeat;
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.DailyReportPage .daily-report-bottom .daily-icon:nth-of-type(2) span{
+    background: url("../images/heart@2x.png") center no-repeat;
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.DailyReportPage .daily-report-bottom .daily-icon:nth-of-type(3) span{
+    background: url("../images/arrow-grey@2x.png") center no-repeat;
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+.DailyReportPage .report .report-top:nth-of-type(1){
+    width: 616px;
+    height: 228px;
+    border-radius: 10px;
+    border: solid 1px #d3ddee;
+}
+.DailyReportPage .report .report-top .report-top-tit{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-bottom: solid 1px #d3ddee;
+}
+.DailyReportPage .report .report-top-item-tit{
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-bottom: solid 1px #d3ddee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.DailyReportPage .report .report-top-item-tit .detailBtn{
+    font-size: 12px;
+    color: #2075bb;
+    font-weight: normal;
+    cursor: pointer;
+}
+.DailyReportPage .report .report-top-item-tit .detailBtn .arrow {
+    display: inline-block;
+    background: url("../images/arrow_right.png") 0 0 no-repeat;
+    background-size: cover;
+    width: 14px;
+    height: 11.5px;
+}
+.DailyReportPage .report .report-top-item{
+    width: 294px;
+    height: 203px;
+    border-radius: 10px;
+    border: solid 1px #d3ddee;
+}
+.DailyReportPage .report .report-top-item-container{
+    background: #ffffff;
+    display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.DailyReportPage .report .report-top-item-bottom{
+    background: #ffffff;
+    text-align: center;
+}
+.DailyReportPage .report .report-top-item-left{
+    width: 115px;
+    border-right: solid 1px #e6eefc;
+    height: 159px;
+    display: flex;
+    align-items: flex-end;
+    background: url("../image/progress-bg.png") center no-repeat;
+    background-size: 100% 100%;
+    border-bottom-left-radius: 10px;
+}
+.DailyReportPage .report .report-top-item-left .baby-blue{
+    width: 9px;
+    height: 103px;
+    object-fit: contain;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    background-color: #5cd0ff;
+    margin-left: 36px;
+}
+
+.DailyReportPage .report .report-top-item-left .blue{
+    background-color: #128fcf;
+    margin-left: 23px;
+}
+.DailyReportPage .report .top-item-right{
+    padding: 22px 15px;
+}
+.DailyReportPage .report .top-item-right .report-item-tit{
+    color: #98a7c0;
+    font-size: 12px;
+}
+.DailyReportPage .report .top-item-right .item-right-list:nth-of-type(1) .report-item-money{
+    color: #5cd0ff;
+    font-size: 14px;
+}
+.DailyReportPage .report .top-item-right .item-right-list:nth-of-type(2){
+    margin-top: 20px;
+}
+.DailyReportPage .report .top-item-right .item-right-list:nth-of-type(2) .report-item-money{
+    color: #128fcf;
+    font-size: 14px;
+
+}
+.DailyReportPage .report .report-top:nth-of-type(2){
+    display: flex;
+    margin-top: 20px;
+}
+.DailyReportPage .report .report-top-item:nth-of-type(2){
+    margin-left: 23px;
+}
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom .tit{
+    font-size: 12px;
+    color: #98a7c0;
+    text-align: center;
+}
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom .report-content-left .coin_num{
+    margin-top: 10px;
+}
+.DailyReportPage .report  .progress{
+    text-align: center;
+    padding: 50px 0;
+}
+.DailyReportPage .report .report-top-item-top img{
+    width: 60px;
+    height: 49px;
+}
+.DailyReportPage .report .report-top-item:nth-of-type(2) .report-top-item-container{
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+}
+.DailyReportPage .report .report-top-item:nth-of-type(2) .report-bottom-tit{
+    color: #98a7c0;
+    font-size: 12px;
+    margin-top: 6px;
+}
+.DailyReportPage .report .report-top-item:nth-of-type(2) .report-bottom-money{
+    color: #000000;
+    margin-top: 10px;
+}
+.progress-time{
+    height: 220px;
+    width: 220px;
+    position: relative;
+    margin: 0 auto;
+    padding: 53px 0;
+}
+.time{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    position: relative;
+    padding: 5px;
+}
+.time1{
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    position: absolute;
+    padding: 5px;
+    top: 53px;
+    left: 0;
+}
+.second{
+    position: absolute;
+    left: 15px;
+    right: 0;
+    top: -25px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+}
+.second  div{
+    background: #e2e7ee;
+    background-size: 100% 100%;
+    position:absolute;
+    width: 4px;
+    left: 50%;
+    top: 0;
+    transform: translate(25%,100px);
+}
+.second div{
+    height: 15px;
+}
+.second1{
+    position: absolute;
+    left: 15px;
+    right: 0;
+    top: -25px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+}
+.second1  div{
+    background: #f8da6b;
+    background-size: 100% 100%;
+    position:absolute;
+    width: 4px;
+    left: 50%;
+    top: 0;
+    transform: translate(25%,100px);
+}
+.second1 div{
+    height: 15px;
+}
+.report-xex{
+    position: absolute;
+    top: 150px;
+    left: 95px;
+    font-size: 25px;
+    color: #98a7c0;
+    font-weight: bold;
+}
+
+
+.DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom .report-content-left:nth-of-type(2) .coin_num{
+    color: #5cd0ff;
+}
+.DailyReportPage .report .report-left:nth-of-type(1){
+    width: 460px;
+    height: 450px;
+    border-radius: 10px;
+    border: solid 1px #d3ddee;
+}
+.DailyReportPage .report .report-left:nth-of-type(2){
+    margin-left: 30px;
+}
+.DailyReportPage footer{
+    max-width: 730px;
+    text-align: left;
+    margin: 20px auto 0 auto;
+    font-size: 12px;
+    color: #829fbe;
+}
+.DailyReportPage header{
+    max-width: 730px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 36px;
+    padding: 100px 0 15px 0;
+}
+
+.DailyReportPage header .tit2{
+    font-size: 18px;
+    margin:10px 0 0 0;
+    line-height: 28px;
+}
+.DailyReportPage header .tit3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    line-height: 28px;
+    color: #2075bb;
+}
+.DailyReportPage .Div_content{
+    width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.DailyReportPage .Div_content .item_box{
+    width: 280px;
+    background: #1c344d;
+    padding: 35px;
+    font-size: 24px;
+    margin-top: 40px;
+    min-height: 250px;
+}
+
+.DailyReportPage .Div_content .item_box .item{
+    color: #829fbe;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.DailyReportPage .Div_content .item_box .itemdata{
+    color: #ffc564;
+    font-size: 18px;
+}
+
+.DailyReportPage .Div_content .item_box .detailBtn{
+    font-size: 14px;
+    color: #2075bb;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.DailyReportPage .Div_content .item_box .detailBtn .arrow{
+    display: inline-block;
+    background: url("../image/arrow_right.png") 0 0 no-repeat;
+    background-size: cover;
+    width: 14px;
+    height: 11.5px;
+}
+
+.DailyReportPage header .progress-bar{
+    /*margin: 30px auto 0;*/
+}
+
+.DailyReportPage header .progress-bar .pb-tit{
+    display: flex;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #2075bb;
+}
+
+.DailyReportPage header .progress-bar .pb-tit .pb-now{
+    flex: 1;
+    text-align: left;
+}
+
+.DailyReportPage header .progress-bar .pb-tit .pb-count{
+    flex: 1;
+    text-align: right;
+    color:#ffc564 ;
+}
+.DailyReportPage .report-top-content{
+    background: #ffffff;
+    padding: 27.5px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.DailyReportPage .progress-bar .pb-bar{
+    height: 10px;
+    border-radius: 20px;
+    padding: 0;
+    background: #f4f8ff;
+    position: relative;
+}
+
+.DailyReportPage .pb-bar-width{
+    max-width: 710px;
+    position: relative;
+    display: flex;
+}
+
+.DailyReportPage .progress-bar .pb-bar-ing{
+    position: absolute;
+    height: 10px;
+    background: #5cd0ff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+.DailyReportPage .progress-bar .pb-bar-ing2{
+    position: absolute;
+    height: 10px;
+    background: #128fcf;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    left: 0;
+    top: 0;
+}
+.DailyReportPage .progress-bar .pb-bar-ing1{
+    position: absolute;
+    height: 10px;
+    background: linear-gradient(#f8fe56, #ffcf66);
+    right: 0;
+    top: 0px;
+}
+.DailyReportPage .pb-desc{
+    font-size: 12px;
+}
+.DailyReportPage .pb-desc .pb-desc-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+}
+.DailyReportPage .pb-label{
+    display: flex;
+}
+.DailyReportPage .pb1{
+    width: 10px;
+    top: 10px;
+    height: 30px;
+    background: url("../image/p1.png") center no-repeat;
+    background-size: 5px 17.5px;
+    position: absolute;
+}
+.DailyReportPage  .pb2{
+    width: 10px;
+    top: 10px;
+    height: 30px;
+    background: url("../image/p2.png") center no-repeat;
+    background-size: 5px 17.5px;
+    position: absolute;
+}
+.DailyReportPage  .pb-label{
+    width: 100%;
+}
+.DailyReportPage .pb3{
+    width: 10px;
+    top: 10px;
+    height: 30px;
+    background: url("../image/p3.png") center no-repeat;
+    background-size: 5px 17.5px;
+    position: absolute;
+}
+.DailyReportPage .pb-desc .pb-now{
+    color: #98a7c0;
+    margin-bottom: 5px;
+}
+.DailyReportPage .pb-desc .pb-tit{
+    text-align: center;
+}
+.DailyReportPage .pb-desc .pb-tit:nth-of-type(1) .pb-count{
+    color: #5cd0ff;
+    font-size: 14px;
+}
+.DailyReportPage .pb-desc .pb-tit:nth-of-type(2) .pb-count{
+    color: #128fcf;
+    font-size: 14px;
+}
+.DailyReportPage .pb-desc .pb-tit:nth-of-type(3) .pb-count{
+    color: #ffcf66;
+    font-size: 14px;
+}
+.DailyReportPage .mining-tatol{
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.DailyReportPage .mining-tatol .pb-now{
+    color: #98a7c0;
+    position: relative;
+    margin-bottom: 5px;
+}
+.DailyReportPage .mining-tatol .pb-count{
+    font-size: 14px;
+}
+/* 每日报告 end */
+
+
+/* 每日报告明细 end */
+@media only screen and (min-width: 320px) and (max-width: 1000px) {
+    /* 每日报告 start */
+    .DailyReportPage{
+        /*padding: 0 5% 100px 5%;*/
+        background: none;
+        background-color: #f4f8ff;
+    }
+    .DailyReportPage .mobile-pb-bar{
+        display: block;
+    }
+    .DailyReportPage .Div_content{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .DailyReportPage .Div_content .item_box{
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(1) .report-left-content{
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom{
+        display: block;
+        padding: 30px 0 30px 10px;
+        text-align: left;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom .report-content-left:nth-of-type(1){
+        margin-bottom: 20px;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(1) .report-left-content-bottom .tit{
+        text-align: left;
+    }
+
+    .DailyReportPage .report{
+        flex-direction: column;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(1){
+        width: 90%;
+        margin:  0 auto;
+        height: auto;
+    }
+    .second div{
+        transform: translate(50%,50px);
+    }
+    .second1 div{
+        transform: translate(50%,50px);
+    }
+    .progress-time{
+        width: 100px;
+        height: 100px;
+        padding: 40px 0 40px 0;
+    }
+    .time{
+        width: 100px;
+        height: 100px;
+    }
+    .time1{
+        width: 100px;
+        height: 100px;
+        top: 40px;
+    }
+    .second div{
+        height: 10px;
+        width: 3px;
+        left: 45%;
+    }
+    .second1 div{
+        height: 10px;
+        width: 3px;
+        left: 45%;
+    }
+    .report-xex {
+        top: 23px;
+        left: 21px;
+        font-size: 15px;
+        text-align: center;
+    }
+    .DailyReportPage .report .report-left:nth-of-type(2){
+        margin: 20px 0;
+    }
+    .DailyReportPage .report .report-top:nth-of-type(1){
+        width: 90%;
+        margin:  0 auto;
+        height: 310px;
+    }
+    .DailyReportPage .report .pc-pb-bar{
+        display: none;
+    }
+    .DailyReportPage .report .mobile-pb-bar{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    .DailyReportPage .progress-bar .pb-bar{
+        height: 170px;
+        display: flex;
+        width: 12px;
+        flex-direction: row-reverse;
+    }
+    .DailyReportPage .pb-desc .pb-desc-container{
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .DailyReportPage .pb-desc .pb-tit{
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .DailyReportPage .pb-label{
+        height: 100%;
+        position: absolute;
+        right: 40px;
+    }
+    .DailyReportPage .pb3{
+        top: auto;
+    }
+
+    .DailyReportPage .progress-bar .ing{
+        position: absolute;
+        height: 10px;
+        background: #5cd0ff;
+        left: 0;
+        top: 0;
+        z-index: 10;
+    }
+    .DailyReportPage .progress-bar .ing2{
+        position: absolute;
+        height: 10px;
+        background: #128fcf;
+        left: 0;
+        top: 0;
+    }
+    .DailyReportPage .progress-bar .ing1{
+        position: absolute;
+        height: 10px;
+        background: linear-gradient(#f8fe56, #ffcf66);
+        bottom: 0;
+        top: auto;
+    }
+    .DailyReportPage .report .report-top-item-left{
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 10px;
+    }
+    .DailyReportPage .pb-bar-width{
+        width: 10px;
+    }
+
+
+
+    .DailyReportPage .mining-tatol{
+        margin-bottom: 20px;
+    }
+    .DailyReportPage .report-top-content{
+        padding: 20px 20px 0 20px;
+    }
+    .DailyReportPage .report .report-top:nth-of-type(2){
+        display: block;
+    }
+    .DailyReportPage .report .report-top-item{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .DailyReportPage .report .report-top-item:nth-of-type(2){
+        margin: 20px auto 0 auto;
+    }
+    .DailyReportPage{
+        padding-bottom: 0;
+    }
+    .DailyReportPage .report{
+        padding-top: 24px;
+    }
+    .DailyReportPage .report .report-top-item-container{
+        flex-direction: row-reverse;
+    }
+    .DailyReportPage .report .report-top-item-left{
+        border-right: 0;
+        border-left: solid 1px #e6eefc;
+    }
+    .DailyReportPage .report .top-item-right{
+        flex: 1;
+    }
+}
+
+p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #635530;
+}
+h4 {
+    color: #635530;
+}
+.last-img {
+    width: 20px;
+    margin-bottom: 8px
+}
+.last-div {
+    width: 33.33%;
+    background: #ffffff;
+    text-align: center;
+    border-top:1px solid #f5f5f5;
+    padding-top: 5px;
+    font-size: 12px;
+}
+.icon-div{
+    background: #ffffff;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: -70px;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px #cdcdcd;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+.insert-div{
+    width: 50%;
+    text-align: center;
+    padding: 13px 0;
+}
+.icon-style{
+    width: 25%;
+    font-size: 12px;
+    text-align: center;
+}
+.img-back{
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background: #f5f5f5;
+    text-align: center;
+    line-height: 49px;
+    margin: 8px auto;
+}
+.icon-style p{
+    font-size: 12px;
+}
+.border-style {
+    border-bottom: 2px solid black;
+}
+.date-style {
+    background: black;
+    color: #f8da6b;
+}

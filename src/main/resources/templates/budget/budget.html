@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="home/_layout.html">
+<div id="app" th:fragment="content">
+    <div class="top-bar" style="background: #f8da6b">
+        <a class="back" onclick="window.history.go(-1)"></a>
+        <span style="color: #635530;font-weight: 500">Bookkeeping</span>
+    </div>
+    <!-- 个人信息 -->
+    <div style="padding:10px">
+        <div style="display: flex;justify-content: left;font-size: 13px;margin-bottom: 10px">
+            <div style="width: 50%;text-align: left"><span th:text="${year}"></span> Total budget </div>
+            <div style="width: 50%;text-align: right" onclick="openAlert()">Edit</div>
+        </div>
+        <div style="display: flex;justify-content: left">
+            <div style="width: 25%">
+                <div class="progress-time">
+                    <div class="time">
+                    </div>
+                    <div class="time1">
+                    </div>
+                    <div class="report-xex" th:text="${percent} + '%'">
+                        25%
+                    </div>
+                    <input type="hidden" th:value="${percent}" id="percent">
+                </div>
+            </div>
+            <div style="width: 75%;padding-left: 20px">
+                <div style="display: flex;justify-content: left;border-bottom: 1px solid #f1f1f1;font-size: 13px;margin-bottom: 10px">
+                    <div style="width: 80%;text-align: left">Remaining budget：</div>
+                    <div style="width: 20%;text-align: right" th:text="${last / 100}">600</div>
+                </div>
+                <div style="display: flex;justify-content: left;font-size: 12px;margin-bottom: 10px;">
+                    <div style="width: 80%;text-align: left">Total budget：</div>
+                    <div style="width: 20%;text-align: right" th:text="${budget / 100}">4000.00</div>
+                </div>
+                <div style="display: flex;justify-content: left;font-size: 12px;margin-bottom: 10px;">
+                    <div style="width: 80%;text-align: left">Total Expenditure：</div>
+                    <div style="width: 20%;text-align: right" th:text="${outSum / 100}">3400.00</div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 10px;width:100%;background: #f1f1f1;"></div>
+        <div>
+            <div style="display: flex;justify-content: left;border-bottom: 1px solid #f1f1f1;font-size: 13px;color: #626262;padding: 10px 0;text-align: center">
+                <div style="width: 25%">Month</div>
+                <div style="width: 25%">Budget</div>
+                <div style="width: 25%">Expenditure</div>
+                <div style="width: 25%">Balance</div>
+            </div>
+            <div style="display: flex;justify-content: left;font-size: 12px;padding: 10px 0;text-align: center" th:each="budgetInfo : ${budgetInfoList}">
+                <div style="width: 25%" th:text="${budgetInfo.getMonth()}">月份</div>
+                <div style="width: 25%" th:text="${budgetInfo.getGetSum() / 100}">Income</div>
+                <div style="width: 25%" th:text="${budgetInfo.getOutSum() / 100}">Expenditure</div>
+                <div style="width: 25%" th:text="${budgetInfo.getLast() / 100}">Balance</div>
+            </div>
+        </div>
+
+    </div>
+    <div class="sy-alert sy-alert-model animated" sy-enter="zoomIn" sy-leave="zoomOut" sy-type="confirm" sy-mask="true" id="alert4">
+        <div class="sy-title">Budget</div>
+        <div class="sy-content">
+            <div class="form">
+                    <div class="input-item">
+                        <span>Balance：</span>
+                        <input type="number" id="budget_price">
+                    </div>
+
+                <form id="booking_form">
+                    <input type="hidden" id="price" name="price">
+                </form>
+            </div>
+        </div>
+        <div class="sy-btn">
+            <button onclick="closeAlert()">Cancel</button>
+            <button onclick="save_alert()">Save</button>
+        </div>
+    </div>
+
+</div>
+</html>
+<script>
+    $(function (){
+        let value = Number($("#percent").val())
+        draw(100,145,'second');
+
+        draw1(100,Math.trunc(value),'second1');
+    })
+    function openAlert(){
+        syalert.syopen('alert4')
+    }
+    function closeAlert(){
+        $("#price").val('')
+        syalert.syhide('alert4')
+    }
+    function save_alert(){
+        make_data()
+        _post('/budget', $("#booking_form").serialize(), function (resp){
+            syalert.syhide('alert4')
+            location.reload()
+        })
+    }
+
+    function make_data(){
+        let price = $("#budget_price").val()
+        price = Math.floor(price * 100)
+        $("#price").val(price)
+    }
+
+    function appendHtml(elem,value){
+        var node = document.createElement("div"),
+            fragment = document.createDocumentFragment(),
+            childs = null,
+            i = 0;
+        node.innerHTML = value;
+        childs = node.childNodes;
+        for( ; i < childs.length; i++){
+            fragment.appendChild(childs[i]);
+        }
+        elem.appendChild(fragment);
+        childs = null;
+        fragment = null;
+        node = null;
+    }
+
+    function draw(num,r,className){
+        for(let i=0; i<num; i++){
+            let second = ''
+            second=`<div class="${className}"   style="transform:rotate(${360/num*i}deg)"><div></div></div>`;
+            appendHtml(document.getElementsByClassName('time')[0],second)
+        }
+    }
+    function draw1(num,count,className){
+        for(let i=0; i<count; i++){
+            let second = ''
+            second=`<div class="${className}"   style="transform:rotate(${360/num*i+180}deg)"><div></div></div>`;
+            appendHtml(document.getElementsByClassName('time1')[0],second)
+        }
+    }
+
+
+
+
+
+</script>

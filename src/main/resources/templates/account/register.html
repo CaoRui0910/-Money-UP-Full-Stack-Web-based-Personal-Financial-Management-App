@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="account/_layout_signin.html">
+    <div class="account-pages w-100 mt-5 mb-5" th:fragment="content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card" style="background: rgba(255, 255, 255, 0.6);border-radius: 10px;margin-top: 100px">
+
+                        <div class="card-body p-4">
+                            <div class="text-center mb-4" style="margin-bottom: 0!important;">
+                                    <span>
+                                        <img th:src="@{/images/metis_logo.png}" alt=""
+                                               height="100">
+                                    </span>
+                            </div>
+
+                            <form id="_registration" class="pt-2">
+                                <div class="form-group mb-3">
+                                    <label style="font-size: 13px">Nickname</label>
+                                    <input class="form-control" type="text" required placeholder="Nickname"
+                                           name="username" id="username">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label style="font-size: 13px">Mobile</label>
+                                    <input class="form-control" type="text" required placeholder="Mobile"
+                                           name="mobile" id="mobile">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label style="font-size: 13px">Password</label>
+                                    <input class="form-control" type="password" placeholder="Password" name="password" id="password">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label style="font-size: 13px">Password confirm </label>
+                                    <input class="form-control" type="password" placeholder="Password confirm"
+                                           name="confirmPassword">
+                                </div>
+
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-primary btn-block" type="button" onclick="_submit()"> Register
+                                    </button>
+                                </div>
+
+                            </form>
+
+
+                            <div class="row mt-3">
+                                <div class="col-12 text-center" style="font-size: 12px;margin-bottom: 15px">
+                                    <p class="text-muted mb-0">Already have an account? <a href="/account/login"
+                                                                          class="text-dark ml-1"><b>Login</b></a></p>
+                                </div> <!-- end col -->
+                            </div>
+                            <!-- end row -->
+
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+        <script>
+            function _valid(){
+                if (!$("#username").val()){
+                    tip("请输入用户名")
+                    return false;
+                }else if(!$("#mobile").val()){
+                    tip("请输入手机号")
+                    return false;
+                }else if(!$("#password").val()){
+                    tip("请输入密码")
+                    return false;
+                }else{
+                    return true;
+                }
+            }
+            function _submit() {
+                if (_valid()){
+                    _post("/register", $("#_registration").serialize(), function (resp) {
+                        if (resp.status === 'ok') {
+                            tip("注册成功");
+                            fresh_redirect('/', 500);
+                        } else {
+                            tip(resp.msg);
+                        }
+                    })
+                }
+            }
+        </script>
+    </div>
+</html>

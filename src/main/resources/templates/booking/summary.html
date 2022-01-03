@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="home/_layout.html">
+<div id="app" th:fragment="content">
+    <div class="top-bar" style="background: #f8da6b">
+        <a class="back" onclick="window.history.go(-1)"></a>
+        <span style="color: #635530;font-weight: 500">Bookkeeping</span>
+    </div>
+    <!-- 个人信息 -->
+    <div class="person-info" style="background: #f8da6b;padding-top: 10px;padding-bottom: 10px">
+        <div style="text-align: center;font-size: 12px;display: flex;justify-content: space-between">
+            <div style="width: 33.33%;text-align: center;font-size: 14px;border: 1px solid black;border-radius: 5px 0 0 5px;border-right: none;line-height: 30px" id="out_menu" class="dateStyle" onclick="location.href='/summary?kind=1'" th:if="${kind==1}">
+                Day
+            </div>
+            <div style="width: 33.33%;text-align: center;font-size: 14px;border: 1px solid black;border-radius: 5px 0 0 5px;border-right: none;line-height: 30px" id="out_menu" onclick="location.href='/summary?kind=1'" th:if="${kind!=1}">
+                Day
+            </div>
+            <div style="width: 33.33%;text-align: center;font-size: 14px;border: 1px solid black;line-height: 30px" id="in_menu" class="dateStyle" onclick="location.href='/summary?kind=2'" th:if="${kind==2}">
+                Month
+            </div>
+            <div style="width: 33.33%;text-align: center;font-size: 14px;border: 1px solid black;line-height: 30px" id="in_menu" onclick="location.href='/summary?kind=2'" th:if="${kind!=2}">
+                Month
+            </div>
+            <div style="width: 33.33%;border-radius: 0 5px 5px 0;text-align: center;font-size: 14px;border: 1px solid black;border-left:none;line-height: 30px" class="dateStyle" onclick="location.href='/summary?kind=3'" th:if="${kind==3}">
+                Year
+            </div>
+            <div style="width: 33.33%;border-radius: 0 5px 5px 0;text-align: center;font-size: 14px;border: 1px solid black;border-left:none;line-height: 30px" onclick="location.href='/summary?kind=3'" th:if="${kind!=3}">
+                Year
+            </div>
+
+        </div>
+    </div>
+    <div>
+        <table>
+            <tbody>
+                <tr th:each="summaryInfo : ${summaryInfoList}">
+                    <th scope="row" th:text="${summaryInfo.getName()}">Ruby</th>
+                    <td th:text="${summaryInfo.getPercent()} + '%'">40%</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="container">
+            <div style="position: relative;width: 100%;height: 250px">
+                <div id="holder"></div>
+            </div>
+            <h2 style="font-size: 15px;margin-top: 5px">Expenditure ranking</h2>
+
+            <div style="display: flex;justify-content: left;font-size: 12px;margin-top: 10px" th:each="summaryInfo : ${summaryInfoList}">
+                <div style="width: 15%;height: 40px;padding-top: 2px">
+                    <div style="height: 30px;width:30px;border-radius: 15px;background: #f5f5f5;text-align: center;line-height: 26px">
+                        <img th:src="@{/css/images/理财.png}" alt="" style="width: 15px">
+                    </div>
+                </div>
+                <div style="width: 85%;display: flex;justify-content: left;border-bottom: 1px solid #e7e7e7">
+                    <div style="width: 25%">
+                        <div style="line-height: 30px;color: #303030">
+                            <span  th:text="${summaryInfo.getName()}">娱乐</span>
+                            <span  th:text="${summaryInfo.getPercent() + '%'}">娱乐</span>
+
+                        </div>
+                    </div>
+                    <div style="width: 75%">
+                        <div style=" text-align: right;line-height: 25px;color: #303030">
+                            <span th:text="${summaryInfo.getPrice() / 100}">200</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+</html>
+<script th:src="@{/js/raphael-min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+<script>
+    $(function (){
+        var nowData=new Date();
+        var opt= {
+            theme:'ios', //设置显示主题
+            mode:'scroller', //设置日期选择方式，这里用滚动
+            display:'bottom', //设置控件出现方式及样式
+            preset : 'date', //日期:年 月 日 时 分
+            // minDate: nowData,
+            maxDate:new Date(nowData.getFullYear(),nowData.getMonth(),nowData.getDate()+7,22),
+            dateFormat: 'yy-mm-dd',
+            yearText:'年',
+            monthText:'月',
+            dayText:'日',
+            lang:'zh' //设置控件语言};
+        };
+        $('#dateinput').mobiscroll(opt);
+    })
+
+
+
+</script>

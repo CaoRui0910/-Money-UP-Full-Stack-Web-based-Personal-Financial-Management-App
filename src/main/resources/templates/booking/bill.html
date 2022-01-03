@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      th:replace="home/_layout.html">
+<div id="app" th:fragment="content">
+    <div class="top-bar" style="background: #f8da6b;height: 200px">
+        <a class="back" onclick="window.history.go(-1)"></a>
+        <span style="color: #635530;font-weight: 500">Bookkeeping</span>
+        <p style="height: 20px">Balance</p>
+        <p style="font-size: 25px" th:text="${(bookingGet - bookingOut) / 100} + '.00'">1000</p>
+        <div style="display: flex;justify-content: left;text-align: center;font-size: 16px;color: black;margin-top: 20px">
+            <div style="width: 50%;">
+                <span style="font-size: 12px">Income</span>
+                <span th:text="${bookingGet / 100} + '.00'"></span>
+
+            </div>
+            <div style="width: 1px;height: 20px;background: black;margin-top: 10px">
+
+            </div>
+            <div style="width: 50%">
+                <span style="font-size: 12px">Expenditure</span>
+                <span th:text="${bookingOut / 100} + '.00'"></span>
+            </div>
+
+        </div>
+    </div>
+    <div style="height: 10px;width:100%;background: #f1f1f1;"></div>
+    <div>
+        <div style="display: flex;justify-content: left;border-bottom: 1px solid #f1f1f1;font-size: 13px;color: #626262;padding: 10px 0;text-align: center">
+            <div style="width: 25%">Month</div>
+            <div style="width: 25%">Income</div>
+            <div style="width: 25%">Expenditure</div>
+            <div style="width: 25%">Balance</div>
+        </div>
+        <div style="display: flex;justify-content: left;font-size: 12px;padding: 10px 0;text-align: center" th:each="budgetInfo : ${summaryInfoList}">
+            <div style="width: 25%" th:text="${budgetInfo.getMonth()}">月份</div>
+            <div style="width: 25%" th:text="${budgetInfo.getGetSum() / 100}">Income</div>
+            <div style="width: 25%" th:text="${budgetInfo.getOutSum() / 100}">Expenditure</div>
+            <div style="width: 25%" th:text="${budgetInfo.getLast() / 100}">Balance</div>
+        </div>
+    </div>
+
+    </div>
+    <div class="sy-alert sy-alert-model animated" sy-enter="zoomIn" sy-leave="zoomOut" sy-type="confirm" sy-mask="true" id="alert4">
+        <div class="sy-title">预算</div>
+        <div class="sy-content">
+            <div class="form">
+                <div class="input-item">
+                    <span>金额：</span>
+                    <input type="number" id="budget_price">
+                </div>
+
+                <form id="booking_form">
+                    <input type="hidden" id="price" name="price">
+                </form>
+            </div>
+        </div>
+        <div class="sy-btn">
+            <button onclick="closeAlert()">取消</button>
+            <button onclick="save_alert()">确定</button>
+        </div>
+    </div>
+
+</div>
+</html>
+<script>
+</script>
