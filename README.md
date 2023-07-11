@@ -1,6 +1,5 @@
 # Bookkeeping-Website
 “Money UP” - Full-Stack Web-based Personal Financial Management App; 
-- web link: http://www.lhdzz.com
 - Created a fully functional web application to record personal financial information with 100+ active users
 - Integrated HTML, CSS and JavaScript (Bootstrap) to create a responsive and user-friendly font-end page
 - Leveraged chart.js to conduct financial data analysis and visualization for users; gained a positive user feedback rate of 98%
